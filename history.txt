@@ -1,0 +1,114 @@
+    1  su -
+    2  cd Schreibtisch/qwer/
+    3  ls
+    4  ees-synthesize -h
+    5  vasy -h
+    6  cd /media/cdrom0/
+    7  ls
+    8  sh ./VBoxLinuxAdditions.run
+    9  sudo sh ./VBoxLinuxAdditions.run
+   10  sudo su
+   11  su
+   12  cd Schreibtisch/qwer/
+   13  ls
+   14  vasy -a -p adder2.vhdl adder2_vasy
+   15  clear
+   16  vasy -a -p adder2.vhdl adder2_vasy
+   17  ls
+   18  vasy -a -p adder2.vhdl adder2_vasy
+   19  vasy -a -p registerfile.vhdl regfile_vasy
+   20  rm regfile_vasy.vbe 
+   21  vasy -a -p registerfile.vhdl regfile_vasy
+   22  rm regfile_vasy.vbe 
+   23  vasy -a -p registerfile.vhdl regfile_vasy
+   24  rm regfile_vasy.vbe 
+   25  vasy -a -p registerfile.vhdl regfile_vasy
+   26  rm regfile_vasy.vbe 
+   27  vasy -a -p registerfile.vhdl regfile_vasy
+   28  rm regfile_vasy.vbe 
+   29  vasy -a -p registerfile.vhdl regfile_vasy
+   30  geany registerfile.vhdl 
+   31  vasy -a -p registerfile.vhdl regfile_vasy
+   32  geany registerfile.vhdl 
+   33  vasy -a -p registerfile.vhdl regfile_vasy
+   34  rm regfile_vasy.vbe 
+   35  vasy -a -p registerfile.vhdl regfile_vasy
+   36  rm regfile_vasy.vbe 
+   37  vasy -a -p registerfile.vhdl regfile_vasy
+   38  rm regfile_vasy.vbe 
+   39  vasy -a -p registerfile.vhdl regfile_vasy
+   40  rm regfile_vasy.vbe 
+   41  vasy -a -p registerfile.vhdl regfile_vasy
+   42  rm regfile_vasy.vbe 
+   43  vasy -a -p registerfile.vhdl regfile_vasy
+   44  rm regfile_vasy.vbe 
+   45  vasy -a -p registerfile.vhdl regfile_vasy
+   46  rm regfile_vasy.vbe 
+   47  vasy -a -p registerfile.vhdl regfile_vasy
+   48  rm regfile_vasy.vbe 
+   49  vasy -a -p registerfile.vhdl regfile_vasy
+   50  rm regfile_vasy.vbe 
+   51  vasy -a -p registerfile.vhdl regfile_vasy
+   52  rm regfile_vasy.vbe 
+   53  vasy -a -p registerfile.vhdl regfile_vasy
+   54  rm regfile_vasy.vbe 
+   55  vasy -a -p registerfile.vhdl regfile_vasy
+   56  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   57  ghdl -a registerfile.vhdl
+   58  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   59  ghdl -r regfile_tb.vhdl 
+   60  ghdl -r regfile_tb.vhdl testbench --wave=123.ghw
+   61  ghdl -r regfile_tb testbench --wave=123.ghw
+   62  ghdl -r regfile_tb.vhdl testbench --wave=123.ghw
+   63  ghdl -r regfile_tb testbench --wave=123.ghw
+   64  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   65  ghdl -r regfile_tb testbench --wave=123.ghw
+   66  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   67  ghdl -r regfile_tb testbench --wave=123.ghw
+   68  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   69  ghdl -r regfile_tb testbench --wave=123.ghw
+   70  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   71  ghdl -r regfile_tb testbench --wave=123.ghw
+   72  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   73  ghdl -r regfile_tb testbench --wave=123.ghw
+   74  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   75  ghdl -r regfile_tb testbench --wave=123.ghw
+   76  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   77  ghdl -r regfile_tb testbench --wave=123.ghw
+   78  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   79  ghdl -r regfile_tb testbench --wave=123.ghw
+   80  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   81  ghdl -r regfile_tb testbench --wave=123.ghw
+   82  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   83  ghdl -r regfile_tb testbench --wave=123.ghw
+   84  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   85  history
+   86  vasy -a -p registerfile.vhdl regfile_vasy
+   87  rm regfile_vasy.vbe 
+   88  vasy -a -p registerfile.vhdl regfile_vasy
+   89  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   90  ghdl -r regfile_tb testbench --wave=123.ghw
+   91  gtkwave 123.ghw 
+   92  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   93  ghdl -r regfile_tb testbench --wave=123.ghw
+   94  gtkwave 123.ghw 
+   95  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   96  ghdl -r regfile_tb testbench --wave=123.ghw
+   97  gtkwave 123.ghw 
+   98  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+   99  ghdl -r regfile_tb testbench --wave=123.ghw
+  100  gtkwave 123.ghw 
+  101  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+  102  ghdl -r regfile_tb testbench --wave=123.ghw
+  103  gtkwave 123.ghw 
+  104  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+  105  gtkwave 123.ghw 
+  106  ghdl -r regfile_tb testbench --wave=123.ghw
+  107  gtkwave 123.ghw 
+  108  ghdl -a registerfile.vhdl regfile_tb.vhdl 
+  109  ghdl -r regfile_tb testbench --wave=123.ghw
+  110  gtkwave 123.ghw 
+  111  ls
+  112  git init
+  113  git status
+  114  history > history.txt
