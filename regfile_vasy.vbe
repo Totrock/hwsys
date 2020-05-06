@@ -43,7 +43,7 @@ ARCHITECTURE VBE OF regfile_vasy IS
   SIGNAL rtldef_2	: BIT;
   SIGNAL rtldef_1	: BIT;
   SIGNAL rtldef_0	: BIT;
-  SIGNAL reg_idx	: REG_VECTOR(15 DOWNTO 0) REGISTER;
+  SIGNAL reg_idx	: BIT_VECTOR(15 DOWNTO 0);
   SIGNAL reg_idx_0	: REG_VECTOR(15 DOWNTO 0) REGISTER;
   SIGNAL reg_idx_1	: REG_VECTOR(15 DOWNTO 0) REGISTER;
   SIGNAL reg_idx_2	: REG_VECTOR(15 DOWNTO 0) REGISTER;
@@ -52,191 +52,188 @@ ARCHITECTURE VBE OF regfile_vasy IS
   SIGNAL reg_idx_5	: REG_VECTOR(15 DOWNTO 0) REGISTER;
   SIGNAL reg_idx_6	: REG_VECTOR(15 DOWNTO 0) REGISTER;
   SIGNAL reg_idx_7	: REG_VECTOR(15 DOWNTO 0) REGISTER;
-  SIGNAL p26_3_reddef_58	: BIT_VECTOR(15 DOWNTO 0);
-  SIGNAL p26_3_reddef_56	: BIT_VECTOR(15 DOWNTO 0);
-  SIGNAL p26_3_def_18	: BIT;
-  SIGNAL p26_3_def_15	: BIT;
-  SIGNAL p26_3_def_10	: BIT;
-  SIGNAL p26_3_def_9	: BIT;
-  SIGNAL p26_3_def_6	: BIT;
-  SIGNAL p26_3_def_1	: BIT;
+  SIGNAL p30_2_reddef_76	: BIT_VECTOR(15 DOWNTO 0);
+  SIGNAL p30_2_reddef_74	: BIT_VECTOR(15 DOWNTO 0);
+  SIGNAL p30_2_def_16	: BIT;
+  SIGNAL p30_2_def_10	: BIT;
+  SIGNAL p30_2_def_7	: BIT;
+  SIGNAL p30_2_def_1	: BIT;
 BEGIN
 
   LABEL0 : BLOCK  ((clk = '1') AND NOT(clk'STABLE) )
   BEGIN
-    reg_idx_0(15 downto 9) <= GUARDED (((load_hi AND p26_3_reddef_56(15)) OR (NOT(load_hi) AND p26_3_reddef_58(15))) 
-& ((load_hi AND p26_3_reddef_56(14)) OR (NOT(load_hi) AND p26_3_reddef_58(14))) 
-& ((load_hi AND p26_3_reddef_56(13)) OR (NOT(load_hi) AND p26_3_reddef_58(13))) 
-& ((load_hi AND p26_3_reddef_56(12)) OR (NOT(load_hi) AND p26_3_reddef_58(12))) 
-& ((load_hi AND p26_3_reddef_56(11)) OR (NOT(load_hi) AND p26_3_reddef_58(11))) 
-& ((load_hi AND p26_3_reddef_56(10)) OR (NOT(load_hi) AND p26_3_reddef_58(10))) 
-& ((load_hi AND p26_3_reddef_56(9)) OR (NOT(load_hi) AND p26_3_reddef_58(9)))) WHEN (NOT(in_sel(0)) AND NOT(in_sel(1)) AND NOT(in_sel(2)) AND (load_hi OR load_lo)) ELSE reg_idx_0(15 downto 9);
+    reg_idx_0 <= GUARDED (((load_hi AND p30_2_reddef_74(15)) OR (NOT(load_hi) AND p30_2_reddef_76(15))) 
+& ((load_hi AND p30_2_reddef_74(14)) OR (NOT(load_hi) AND p30_2_reddef_76(14))) 
+& ((load_hi AND p30_2_reddef_74(13)) OR (NOT(load_hi) AND p30_2_reddef_76(13))) 
+& ((load_hi AND p30_2_reddef_74(12)) OR (NOT(load_hi) AND p30_2_reddef_76(12))) 
+& ((load_hi AND p30_2_reddef_74(11)) OR (NOT(load_hi) AND p30_2_reddef_76(11))) 
+& ((load_hi AND p30_2_reddef_74(10)) OR (NOT(load_hi) AND p30_2_reddef_76(10))) 
+& ((load_hi AND p30_2_reddef_74(9)) OR (NOT(load_hi) AND p30_2_reddef_76(9))) & 
+((load_hi AND p30_2_reddef_74(8)) OR (NOT(load_hi) AND p30_2_reddef_76(8))) & ((load_hi
+ AND p30_2_reddef_74(7)) OR (NOT(load_hi) AND p30_2_reddef_76(7))) & ((load_hi 
+AND p30_2_reddef_74(6)) OR (NOT(load_hi) AND p30_2_reddef_76(6))) & ((load_hi AND p30_2_reddef_74(5)
+) OR (NOT(load_hi) AND p30_2_reddef_76(5))) & ((load_hi AND p30_2_reddef_74(4)) 
+OR (NOT(load_hi) AND p30_2_reddef_76(4))) & ((load_hi AND p30_2_reddef_74(3)) OR 
+(NOT(load_hi) AND p30_2_reddef_76(3))) & ((load_hi AND p30_2_reddef_74(2)) OR (
+NOT(load_hi) AND p30_2_reddef_76(2))) & ((load_hi AND p30_2_reddef_74(1)) OR (NOT(load_hi
+) AND p30_2_reddef_76(1))) & ((load_hi AND p30_2_reddef_74(0)) OR (NOT(load_hi) 
+AND p30_2_reddef_76(0)))) WHEN ((load_hi OR load_lo) AND NOT(in_sel(1)) AND NOT(in_sel(0)) AND NOT(in_sel(2))) ELSE reg_idx_0;
   END BLOCK LABEL0;
   LABEL1 : BLOCK  ((clk = '1') AND NOT(clk'STABLE) )
   BEGIN
-    reg_idx_0(8) <= GUARDED ((p26_3_def_10 AND ((p26_3_def_1 AND ((p26_3_reddef_56(8) AND (NOT(p26_3_def_9)
- OR p26_3_def_18)) OR (p26_3_reddef_58(8) AND (p26_3_reddef_56(8) OR (p26_3_def_9
- AND NOT(p26_3_def_18)))))) OR (NOT(p26_3_def_1) AND p26_3_reddef_56(8)))) OR (
-NOT(p26_3_def_10) AND p26_3_reddef_58(8))) WHEN ((p26_3_def_1 AND p26_3_def_9) OR (p26_3_def_10 AND ((p26_3_def_1 AND p26_3_def_9
-) OR p26_3_def_18))) ELSE reg_idx_0(8);
+    reg_idx_1(15) <= GUARDED ((load_hi AND p30_2_reddef_74(15)) OR (NOT(load_hi) AND p30_2_reddef_76(15))) WHEN ((load_hi OR load_lo) AND NOT(in_sel(1)) AND in_sel(0) AND NOT(in_sel(2))) ELSE reg_idx_1(15);
   END BLOCK LABEL1;
   LABEL2 : BLOCK  ((clk = '1') AND NOT(clk'STABLE) )
   BEGIN
-    reg_idx_0(7 downto 0) <= GUARDED (((load_hi AND p26_3_reddef_56(7)) OR (NOT(load_hi) AND p26_3_reddef_58(7))) & 
-((load_hi AND p26_3_reddef_56(6)) OR (NOT(load_hi) AND p26_3_reddef_58(6))) & ((load_hi
- AND p26_3_reddef_56(5)) OR (NOT(load_hi) AND p26_3_reddef_58(5))) & ((load_hi 
-AND p26_3_reddef_56(4)) OR (NOT(load_hi) AND p26_3_reddef_58(4))) & ((load_hi AND p26_3_reddef_56(3)
-) OR (NOT(load_hi) AND p26_3_reddef_58(3))) & ((load_hi AND p26_3_reddef_56(2)) 
-OR (NOT(load_hi) AND p26_3_reddef_58(2))) & ((load_hi AND p26_3_reddef_56(1)) OR 
-(NOT(load_hi) AND p26_3_reddef_58(1))) & ((load_hi AND p26_3_reddef_56(0)) OR (
-NOT(load_hi) AND p26_3_reddef_58(0)))) WHEN (NOT(in_sel(0)) AND NOT(in_sel(1)) AND NOT(in_sel(2)) AND (load_hi OR load_lo)) ELSE reg_idx_0(7 downto 0);
+    reg_idx_1(14 downto 0) <= GUARDED (((load_hi AND p30_2_reddef_74(14)) OR (NOT(load_hi) AND p30_2_reddef_76(14))) 
+& ((load_hi AND p30_2_reddef_74(13)) OR (NOT(load_hi) AND p30_2_reddef_76(13))) 
+& ((load_hi AND p30_2_reddef_74(12)) OR (NOT(load_hi) AND p30_2_reddef_76(12))) 
+& ((load_hi AND p30_2_reddef_74(11)) OR (NOT(load_hi) AND p30_2_reddef_76(11))) 
+& ((load_hi AND p30_2_reddef_74(10)) OR (NOT(load_hi) AND p30_2_reddef_76(10))) 
+& ((load_hi AND p30_2_reddef_74(9)) OR (NOT(load_hi) AND p30_2_reddef_76(9))) & 
+((load_hi AND p30_2_reddef_74(8)) OR (NOT(load_hi) AND p30_2_reddef_76(8))) & ((load_hi
+ AND p30_2_reddef_74(7)) OR (NOT(load_hi) AND p30_2_reddef_76(7))) & ((load_hi 
+AND p30_2_reddef_74(6)) OR (NOT(load_hi) AND p30_2_reddef_76(6))) & ((load_hi AND p30_2_reddef_74(5)
+) OR (NOT(load_hi) AND p30_2_reddef_76(5))) & ((load_hi AND p30_2_reddef_74(4)) 
+OR (NOT(load_hi) AND p30_2_reddef_76(4))) & ((load_hi AND p30_2_reddef_74(3)) OR 
+(NOT(load_hi) AND p30_2_reddef_76(3))) & ((load_hi AND p30_2_reddef_74(2)) OR (
+NOT(load_hi) AND p30_2_reddef_76(2))) & ((load_hi AND p30_2_reddef_74(1)) OR (NOT(load_hi
+) AND p30_2_reddef_76(1))) & ((load_hi AND p30_2_reddef_74(0)) OR (NOT(load_hi) 
+AND p30_2_reddef_76(0)))) WHEN ((load_hi OR load_lo) AND in_sel(0) AND NOT(in_sel(1)) AND NOT(in_sel(2))) ELSE reg_idx_1(14 downto 0);
   END BLOCK LABEL2;
   LABEL3 : BLOCK  ((clk = '1') AND NOT(clk'STABLE) )
   BEGIN
-    reg_idx_1 <= GUARDED (((load_hi AND p26_3_reddef_56(15)) OR (NOT(load_hi) AND p26_3_reddef_58(15))) 
-& ((load_hi AND p26_3_reddef_56(14)) OR (NOT(load_hi) AND p26_3_reddef_58(14))) 
-& ((load_hi AND p26_3_reddef_56(13)) OR (NOT(load_hi) AND p26_3_reddef_58(13))) 
-& ((load_hi AND p26_3_reddef_56(12)) OR (NOT(load_hi) AND p26_3_reddef_58(12))) 
-& ((load_hi AND p26_3_reddef_56(11)) OR (NOT(load_hi) AND p26_3_reddef_58(11))) 
-& ((load_hi AND p26_3_reddef_56(10)) OR (NOT(load_hi) AND p26_3_reddef_58(10))) 
-& ((load_hi AND p26_3_reddef_56(9)) OR (NOT(load_hi) AND p26_3_reddef_58(9))) & 
-((load_hi AND p26_3_reddef_56(8)) OR (NOT(load_hi) AND p26_3_reddef_58(8))) & ((load_hi
- AND p26_3_reddef_56(7)) OR (NOT(load_hi) AND p26_3_reddef_58(7))) & ((load_hi 
-AND p26_3_reddef_56(6)) OR (NOT(load_hi) AND p26_3_reddef_58(6))) & ((load_hi AND p26_3_reddef_56(5)
-) OR (NOT(load_hi) AND p26_3_reddef_58(5))) & ((load_hi AND p26_3_reddef_56(4)) 
-OR (NOT(load_hi) AND p26_3_reddef_58(4))) & ((load_hi AND p26_3_reddef_56(3)) OR 
-(NOT(load_hi) AND p26_3_reddef_58(3))) & ((load_hi AND p26_3_reddef_56(2)) OR (
-NOT(load_hi) AND p26_3_reddef_58(2))) & ((load_hi AND p26_3_reddef_56(1)) OR (NOT(load_hi
-) AND p26_3_reddef_58(1))) & ((load_hi AND p26_3_reddef_56(0)) OR (NOT(load_hi) 
-AND p26_3_reddef_58(0)))) WHEN (in_sel(0) AND NOT(in_sel(1)) AND NOT(in_sel(2)) AND (load_hi OR load_lo)) ELSE reg_idx_1;
+    reg_idx_2(15 downto 6) <= GUARDED (((load_hi AND p30_2_reddef_74(15)) OR (NOT(load_hi) AND p30_2_reddef_76(15))) 
+& ((load_hi AND p30_2_reddef_74(14)) OR (NOT(load_hi) AND p30_2_reddef_76(14))) 
+& ((load_hi AND p30_2_reddef_74(13)) OR (NOT(load_hi) AND p30_2_reddef_76(13))) 
+& ((load_hi AND p30_2_reddef_74(12)) OR (NOT(load_hi) AND p30_2_reddef_76(12))) 
+& ((load_hi AND p30_2_reddef_74(11)) OR (NOT(load_hi) AND p30_2_reddef_76(11))) 
+& ((load_hi AND p30_2_reddef_74(10)) OR (NOT(load_hi) AND p30_2_reddef_76(10))) 
+& ((load_hi AND p30_2_reddef_74(9)) OR (NOT(load_hi) AND p30_2_reddef_76(9))) & 
+((load_hi AND p30_2_reddef_74(8)) OR (NOT(load_hi) AND p30_2_reddef_76(8))) & ((load_hi
+ AND p30_2_reddef_74(7)) OR (NOT(load_hi) AND p30_2_reddef_76(7))) & ((load_hi 
+AND p30_2_reddef_74(6)) OR (NOT(load_hi) AND p30_2_reddef_76(6)))) WHEN ((load_hi OR load_lo) AND NOT(in_sel(0)) AND in_sel(1) AND NOT(in_sel(2))) ELSE reg_idx_2(15 downto 6);
   END BLOCK LABEL3;
   LABEL4 : BLOCK  ((clk = '1') AND NOT(clk'STABLE) )
   BEGIN
-    reg_idx_2 <= GUARDED (((load_hi AND p26_3_reddef_56(15)) OR (NOT(load_hi) AND p26_3_reddef_58(15))) 
-& ((load_hi AND p26_3_reddef_56(14)) OR (NOT(load_hi) AND p26_3_reddef_58(14))) 
-& ((load_hi AND p26_3_reddef_56(13)) OR (NOT(load_hi) AND p26_3_reddef_58(13))) 
-& ((load_hi AND p26_3_reddef_56(12)) OR (NOT(load_hi) AND p26_3_reddef_58(12))) 
-& ((load_hi AND p26_3_reddef_56(11)) OR (NOT(load_hi) AND p26_3_reddef_58(11))) 
-& ((load_hi AND p26_3_reddef_56(10)) OR (NOT(load_hi) AND p26_3_reddef_58(10))) 
-& ((load_hi AND p26_3_reddef_56(9)) OR (NOT(load_hi) AND p26_3_reddef_58(9))) & 
-((load_hi AND p26_3_reddef_56(8)) OR (NOT(load_hi) AND p26_3_reddef_58(8))) & ((load_hi
- AND p26_3_reddef_56(7)) OR (NOT(load_hi) AND p26_3_reddef_58(7))) & ((load_hi 
-AND p26_3_reddef_56(6)) OR (NOT(load_hi) AND p26_3_reddef_58(6))) & ((load_hi AND p26_3_reddef_56(5)
-) OR (NOT(load_hi) AND p26_3_reddef_58(5))) & ((load_hi AND p26_3_reddef_56(4)) 
-OR (NOT(load_hi) AND p26_3_reddef_58(4))) & ((load_hi AND p26_3_reddef_56(3)) OR 
-(NOT(load_hi) AND p26_3_reddef_58(3))) & ((load_hi AND p26_3_reddef_56(2)) OR (
-NOT(load_hi) AND p26_3_reddef_58(2))) & ((load_hi AND p26_3_reddef_56(1)) OR (NOT(load_hi
-) AND p26_3_reddef_58(1))) & ((load_hi AND p26_3_reddef_56(0)) OR (NOT(load_hi) 
-AND p26_3_reddef_58(0)))) WHEN (NOT(in_sel(0)) AND in_sel(1) AND NOT(in_sel(2)) AND (load_hi OR load_lo)) ELSE reg_idx_2;
+    reg_idx_2(5) <= GUARDED ((p30_2_def_10 AND ((p30_2_def_1 AND ((p30_2_reddef_74(5) AND p30_2_def_16) OR 
+(p30_2_reddef_76(5) AND (p30_2_reddef_74(5) OR NOT(p30_2_def_16))))) OR (NOT(p30_2_def_1
+) AND p30_2_reddef_74(5)))) OR (NOT(p30_2_def_10) AND p30_2_reddef_76(5))) WHEN ((p30_2_def_1 AND p30_2_def_7) OR (p30_2_def_10 AND (p30_2_def_16 OR (p30_2_def_1
+ AND (p30_2_def_16 OR p30_2_def_7))))) ELSE reg_idx_2(5);
   END BLOCK LABEL4;
   LABEL5 : BLOCK  ((clk = '1') AND NOT(clk'STABLE) )
   BEGIN
-    reg_idx_3(15 downto 14) <= GUARDED (((load_hi AND p26_3_reddef_56(15)) OR (NOT(load_hi) AND p26_3_reddef_58(15))) 
-& ((load_hi AND p26_3_reddef_56(14)) OR (NOT(load_hi) AND p26_3_reddef_58(14)))) WHEN (in_sel(0) AND in_sel(1) AND NOT(in_sel(2)) AND (load_hi OR load_lo)) ELSE reg_idx_3(15 downto 14);
+    reg_idx_2(4 downto 0) <= GUARDED (((load_hi AND p30_2_reddef_74(4)) OR (NOT(load_hi) AND p30_2_reddef_76(4))) & 
+((load_hi AND p30_2_reddef_74(3)) OR (NOT(load_hi) AND p30_2_reddef_76(3))) & ((load_hi
+ AND p30_2_reddef_74(2)) OR (NOT(load_hi) AND p30_2_reddef_76(2))) & ((load_hi 
+AND p30_2_reddef_74(1)) OR (NOT(load_hi) AND p30_2_reddef_76(1))) & ((load_hi AND p30_2_reddef_74(0)
+) OR (NOT(load_hi) AND p30_2_reddef_76(0)))) WHEN ((load_hi OR load_lo) AND NOT(in_sel(0)) AND in_sel(1) AND NOT(in_sel(2))) ELSE reg_idx_2(4 downto 0);
   END BLOCK LABEL5;
   LABEL6 : BLOCK  ((clk = '1') AND NOT(clk'STABLE) )
   BEGIN
-    reg_idx_3(13) <= GUARDED ((p26_3_def_10 AND ((p26_3_def_1 AND ((p26_3_reddef_56(13) AND (NOT(p26_3_def_6
-) OR p26_3_def_15)) OR (p26_3_reddef_58(13) AND (p26_3_reddef_56(13) OR (p26_3_def_6
- AND NOT(p26_3_def_15)))))) OR (NOT(p26_3_def_1) AND p26_3_reddef_56(13)))) OR (
-NOT(p26_3_def_10) AND p26_3_reddef_58(13))) WHEN ((p26_3_def_1 AND p26_3_def_6) OR (p26_3_def_10 AND ((p26_3_def_1 AND p26_3_def_6
-) OR p26_3_def_15))) ELSE reg_idx_3(13);
+    reg_idx_3 <= GUARDED (((load_hi AND p30_2_reddef_74(15)) OR (NOT(load_hi) AND p30_2_reddef_76(15))) 
+& ((load_hi AND p30_2_reddef_74(14)) OR (NOT(load_hi) AND p30_2_reddef_76(14))) 
+& ((load_hi AND p30_2_reddef_74(13)) OR (NOT(load_hi) AND p30_2_reddef_76(13))) 
+& ((load_hi AND p30_2_reddef_74(12)) OR (NOT(load_hi) AND p30_2_reddef_76(12))) 
+& ((load_hi AND p30_2_reddef_74(11)) OR (NOT(load_hi) AND p30_2_reddef_76(11))) 
+& ((load_hi AND p30_2_reddef_74(10)) OR (NOT(load_hi) AND p30_2_reddef_76(10))) 
+& ((load_hi AND p30_2_reddef_74(9)) OR (NOT(load_hi) AND p30_2_reddef_76(9))) & 
+((load_hi AND p30_2_reddef_74(8)) OR (NOT(load_hi) AND p30_2_reddef_76(8))) & ((load_hi
+ AND p30_2_reddef_74(7)) OR (NOT(load_hi) AND p30_2_reddef_76(7))) & ((load_hi 
+AND p30_2_reddef_74(6)) OR (NOT(load_hi) AND p30_2_reddef_76(6))) & ((load_hi AND p30_2_reddef_74(5)
+) OR (NOT(load_hi) AND p30_2_reddef_76(5))) & ((load_hi AND p30_2_reddef_74(4)) 
+OR (NOT(load_hi) AND p30_2_reddef_76(4))) & ((load_hi AND p30_2_reddef_74(3)) OR 
+(NOT(load_hi) AND p30_2_reddef_76(3))) & ((load_hi AND p30_2_reddef_74(2)) OR (
+NOT(load_hi) AND p30_2_reddef_76(2))) & ((load_hi AND p30_2_reddef_74(1)) OR (NOT(load_hi
+) AND p30_2_reddef_76(1))) & ((load_hi AND p30_2_reddef_74(0)) OR (NOT(load_hi) 
+AND p30_2_reddef_76(0)))) WHEN ((load_hi OR load_lo) AND in_sel(0) AND in_sel(1) AND NOT(in_sel(2))) ELSE reg_idx_3;
   END BLOCK LABEL6;
   LABEL7 : BLOCK  ((clk = '1') AND NOT(clk'STABLE) )
   BEGIN
-    reg_idx_3(12 downto 0) <= GUARDED (((load_hi AND p26_3_reddef_56(12)) OR (NOT(load_hi) AND p26_3_reddef_58(12))) 
-& ((load_hi AND p26_3_reddef_56(11)) OR (NOT(load_hi) AND p26_3_reddef_58(11))) 
-& ((load_hi AND p26_3_reddef_56(10)) OR (NOT(load_hi) AND p26_3_reddef_58(10))) 
-& ((load_hi AND p26_3_reddef_56(9)) OR (NOT(load_hi) AND p26_3_reddef_58(9))) & 
-((load_hi AND p26_3_reddef_56(8)) OR (NOT(load_hi) AND p26_3_reddef_58(8))) & ((load_hi
- AND p26_3_reddef_56(7)) OR (NOT(load_hi) AND p26_3_reddef_58(7))) & ((load_hi 
-AND p26_3_reddef_56(6)) OR (NOT(load_hi) AND p26_3_reddef_58(6))) & ((load_hi AND p26_3_reddef_56(5)
-) OR (NOT(load_hi) AND p26_3_reddef_58(5))) & ((load_hi AND p26_3_reddef_56(4)) 
-OR (NOT(load_hi) AND p26_3_reddef_58(4))) & ((load_hi AND p26_3_reddef_56(3)) OR 
-(NOT(load_hi) AND p26_3_reddef_58(3))) & ((load_hi AND p26_3_reddef_56(2)) OR (
-NOT(load_hi) AND p26_3_reddef_58(2))) & ((load_hi AND p26_3_reddef_56(1)) OR (NOT(load_hi
-) AND p26_3_reddef_58(1))) & ((load_hi AND p26_3_reddef_56(0)) OR (NOT(load_hi) 
-AND p26_3_reddef_58(0)))) WHEN (in_sel(0) AND in_sel(1) AND NOT(in_sel(2)) AND (load_hi OR load_lo)) ELSE reg_idx_3(12 downto 0);
+    reg_idx_4 <= GUARDED (((load_hi AND p30_2_reddef_74(15)) OR (NOT(load_hi) AND p30_2_reddef_76(15))) 
+& ((load_hi AND p30_2_reddef_74(14)) OR (NOT(load_hi) AND p30_2_reddef_76(14))) 
+& ((load_hi AND p30_2_reddef_74(13)) OR (NOT(load_hi) AND p30_2_reddef_76(13))) 
+& ((load_hi AND p30_2_reddef_74(12)) OR (NOT(load_hi) AND p30_2_reddef_76(12))) 
+& ((load_hi AND p30_2_reddef_74(11)) OR (NOT(load_hi) AND p30_2_reddef_76(11))) 
+& ((load_hi AND p30_2_reddef_74(10)) OR (NOT(load_hi) AND p30_2_reddef_76(10))) 
+& ((load_hi AND p30_2_reddef_74(9)) OR (NOT(load_hi) AND p30_2_reddef_76(9))) & 
+((load_hi AND p30_2_reddef_74(8)) OR (NOT(load_hi) AND p30_2_reddef_76(8))) & ((load_hi
+ AND p30_2_reddef_74(7)) OR (NOT(load_hi) AND p30_2_reddef_76(7))) & ((load_hi 
+AND p30_2_reddef_74(6)) OR (NOT(load_hi) AND p30_2_reddef_76(6))) & ((load_hi AND p30_2_reddef_74(5)
+) OR (NOT(load_hi) AND p30_2_reddef_76(5))) & ((load_hi AND p30_2_reddef_74(4)) 
+OR (NOT(load_hi) AND p30_2_reddef_76(4))) & ((load_hi AND p30_2_reddef_74(3)) OR 
+(NOT(load_hi) AND p30_2_reddef_76(3))) & ((load_hi AND p30_2_reddef_74(2)) OR (
+NOT(load_hi) AND p30_2_reddef_76(2))) & ((load_hi AND p30_2_reddef_74(1)) OR (NOT(load_hi
+) AND p30_2_reddef_76(1))) & ((load_hi AND p30_2_reddef_74(0)) OR (NOT(load_hi) 
+AND p30_2_reddef_76(0)))) WHEN ((load_hi OR load_lo) AND NOT(in_sel(0)) AND NOT(in_sel(1)) AND in_sel(2)) ELSE reg_idx_4;
   END BLOCK LABEL7;
   LABEL8 : BLOCK  ((clk = '1') AND NOT(clk'STABLE) )
   BEGIN
-    reg_idx_4 <= GUARDED (((load_hi AND p26_3_reddef_56(15)) OR (NOT(load_hi) AND p26_3_reddef_58(15))) 
-& ((load_hi AND p26_3_reddef_56(14)) OR (NOT(load_hi) AND p26_3_reddef_58(14))) 
-& ((load_hi AND p26_3_reddef_56(13)) OR (NOT(load_hi) AND p26_3_reddef_58(13))) 
-& ((load_hi AND p26_3_reddef_56(12)) OR (NOT(load_hi) AND p26_3_reddef_58(12))) 
-& ((load_hi AND p26_3_reddef_56(11)) OR (NOT(load_hi) AND p26_3_reddef_58(11))) 
-& ((load_hi AND p26_3_reddef_56(10)) OR (NOT(load_hi) AND p26_3_reddef_58(10))) 
-& ((load_hi AND p26_3_reddef_56(9)) OR (NOT(load_hi) AND p26_3_reddef_58(9))) & 
-((load_hi AND p26_3_reddef_56(8)) OR (NOT(load_hi) AND p26_3_reddef_58(8))) & ((load_hi
- AND p26_3_reddef_56(7)) OR (NOT(load_hi) AND p26_3_reddef_58(7))) & ((load_hi 
-AND p26_3_reddef_56(6)) OR (NOT(load_hi) AND p26_3_reddef_58(6))) & ((load_hi AND p26_3_reddef_56(5)
-) OR (NOT(load_hi) AND p26_3_reddef_58(5))) & ((load_hi AND p26_3_reddef_56(4)) 
-OR (NOT(load_hi) AND p26_3_reddef_58(4))) & ((load_hi AND p26_3_reddef_56(3)) OR 
-(NOT(load_hi) AND p26_3_reddef_58(3))) & ((load_hi AND p26_3_reddef_56(2)) OR (
-NOT(load_hi) AND p26_3_reddef_58(2))) & ((load_hi AND p26_3_reddef_56(1)) OR (NOT(load_hi
-) AND p26_3_reddef_58(1))) & ((load_hi AND p26_3_reddef_56(0)) OR (NOT(load_hi) 
-AND p26_3_reddef_58(0)))) WHEN (NOT(in_sel(0)) AND NOT(in_sel(1)) AND in_sel(2) AND (load_hi OR load_lo)) ELSE reg_idx_4;
+    reg_idx_5 <= GUARDED (((load_hi AND p30_2_reddef_74(15)) OR (NOT(load_hi) AND p30_2_reddef_76(15))) 
+& ((load_hi AND p30_2_reddef_74(14)) OR (NOT(load_hi) AND p30_2_reddef_76(14))) 
+& ((load_hi AND p30_2_reddef_74(13)) OR (NOT(load_hi) AND p30_2_reddef_76(13))) 
+& ((load_hi AND p30_2_reddef_74(12)) OR (NOT(load_hi) AND p30_2_reddef_76(12))) 
+& ((load_hi AND p30_2_reddef_74(11)) OR (NOT(load_hi) AND p30_2_reddef_76(11))) 
+& ((load_hi AND p30_2_reddef_74(10)) OR (NOT(load_hi) AND p30_2_reddef_76(10))) 
+& ((load_hi AND p30_2_reddef_74(9)) OR (NOT(load_hi) AND p30_2_reddef_76(9))) & 
+((load_hi AND p30_2_reddef_74(8)) OR (NOT(load_hi) AND p30_2_reddef_76(8))) & ((load_hi
+ AND p30_2_reddef_74(7)) OR (NOT(load_hi) AND p30_2_reddef_76(7))) & ((load_hi 
+AND p30_2_reddef_74(6)) OR (NOT(load_hi) AND p30_2_reddef_76(6))) & ((load_hi AND p30_2_reddef_74(5)
+) OR (NOT(load_hi) AND p30_2_reddef_76(5))) & ((load_hi AND p30_2_reddef_74(4)) 
+OR (NOT(load_hi) AND p30_2_reddef_76(4))) & ((load_hi AND p30_2_reddef_74(3)) OR 
+(NOT(load_hi) AND p30_2_reddef_76(3))) & ((load_hi AND p30_2_reddef_74(2)) OR (
+NOT(load_hi) AND p30_2_reddef_76(2))) & ((load_hi AND p30_2_reddef_74(1)) OR (NOT(load_hi
+) AND p30_2_reddef_76(1))) & ((load_hi AND p30_2_reddef_74(0)) OR (NOT(load_hi) 
+AND p30_2_reddef_76(0)))) WHEN ((load_hi OR load_lo) AND in_sel(0) AND NOT(in_sel(1)) AND in_sel(2)) ELSE reg_idx_5;
   END BLOCK LABEL8;
   LABEL9 : BLOCK  ((clk = '1') AND NOT(clk'STABLE) )
   BEGIN
-    reg_idx_5 <= GUARDED (((load_hi AND p26_3_reddef_56(15)) OR (NOT(load_hi) AND p26_3_reddef_58(15))) 
-& ((load_hi AND p26_3_reddef_56(14)) OR (NOT(load_hi) AND p26_3_reddef_58(14))) 
-& ((load_hi AND p26_3_reddef_56(13)) OR (NOT(load_hi) AND p26_3_reddef_58(13))) 
-& ((load_hi AND p26_3_reddef_56(12)) OR (NOT(load_hi) AND p26_3_reddef_58(12))) 
-& ((load_hi AND p26_3_reddef_56(11)) OR (NOT(load_hi) AND p26_3_reddef_58(11))) 
-& ((load_hi AND p26_3_reddef_56(10)) OR (NOT(load_hi) AND p26_3_reddef_58(10))) 
-& ((load_hi AND p26_3_reddef_56(9)) OR (NOT(load_hi) AND p26_3_reddef_58(9))) & 
-((load_hi AND p26_3_reddef_56(8)) OR (NOT(load_hi) AND p26_3_reddef_58(8))) & ((load_hi
- AND p26_3_reddef_56(7)) OR (NOT(load_hi) AND p26_3_reddef_58(7))) & ((load_hi 
-AND p26_3_reddef_56(6)) OR (NOT(load_hi) AND p26_3_reddef_58(6))) & ((load_hi AND p26_3_reddef_56(5)
-) OR (NOT(load_hi) AND p26_3_reddef_58(5))) & ((load_hi AND p26_3_reddef_56(4)) 
-OR (NOT(load_hi) AND p26_3_reddef_58(4))) & ((load_hi AND p26_3_reddef_56(3)) OR 
-(NOT(load_hi) AND p26_3_reddef_58(3))) & ((load_hi AND p26_3_reddef_56(2)) OR (
-NOT(load_hi) AND p26_3_reddef_58(2))) & ((load_hi AND p26_3_reddef_56(1)) OR (NOT(load_hi
-) AND p26_3_reddef_58(1))) & ((load_hi AND p26_3_reddef_56(0)) OR (NOT(load_hi) 
-AND p26_3_reddef_58(0)))) WHEN (in_sel(0) AND NOT(in_sel(1)) AND in_sel(2) AND (load_hi OR load_lo)) ELSE reg_idx_5;
+    reg_idx_6(15 downto 1) <= GUARDED (((load_hi AND p30_2_reddef_74(15)) OR (NOT(load_hi) AND p30_2_reddef_76(15))) 
+& ((load_hi AND p30_2_reddef_74(14)) OR (NOT(load_hi) AND p30_2_reddef_76(14))) 
+& ((load_hi AND p30_2_reddef_74(13)) OR (NOT(load_hi) AND p30_2_reddef_76(13))) 
+& ((load_hi AND p30_2_reddef_74(12)) OR (NOT(load_hi) AND p30_2_reddef_76(12))) 
+& ((load_hi AND p30_2_reddef_74(11)) OR (NOT(load_hi) AND p30_2_reddef_76(11))) 
+& ((load_hi AND p30_2_reddef_74(10)) OR (NOT(load_hi) AND p30_2_reddef_76(10))) 
+& ((load_hi AND p30_2_reddef_74(9)) OR (NOT(load_hi) AND p30_2_reddef_76(9))) & 
+((load_hi AND p30_2_reddef_74(8)) OR (NOT(load_hi) AND p30_2_reddef_76(8))) & ((load_hi
+ AND p30_2_reddef_74(7)) OR (NOT(load_hi) AND p30_2_reddef_76(7))) & ((load_hi 
+AND p30_2_reddef_74(6)) OR (NOT(load_hi) AND p30_2_reddef_76(6))) & ((load_hi AND p30_2_reddef_74(5)
+) OR (NOT(load_hi) AND p30_2_reddef_76(5))) & ((load_hi AND p30_2_reddef_74(4)) 
+OR (NOT(load_hi) AND p30_2_reddef_76(4))) & ((load_hi AND p30_2_reddef_74(3)) OR 
+(NOT(load_hi) AND p30_2_reddef_76(3))) & ((load_hi AND p30_2_reddef_74(2)) OR (
+NOT(load_hi) AND p30_2_reddef_76(2))) & ((load_hi AND p30_2_reddef_74(1)) OR (NOT(load_hi
+) AND p30_2_reddef_76(1)))) WHEN ((load_hi OR load_lo) AND NOT(in_sel(0)) AND in_sel(2) AND in_sel(1)) ELSE reg_idx_6(15 downto 1);
   END BLOCK LABEL9;
   LABEL10 : BLOCK  ((clk = '1') AND NOT(clk'STABLE) )
   BEGIN
-    reg_idx_6 <= GUARDED (((load_hi AND p26_3_reddef_56(15)) OR (NOT(load_hi) AND p26_3_reddef_58(15))) 
-& ((load_hi AND p26_3_reddef_56(14)) OR (NOT(load_hi) AND p26_3_reddef_58(14))) 
-& ((load_hi AND p26_3_reddef_56(13)) OR (NOT(load_hi) AND p26_3_reddef_58(13))) 
-& ((load_hi AND p26_3_reddef_56(12)) OR (NOT(load_hi) AND p26_3_reddef_58(12))) 
-& ((load_hi AND p26_3_reddef_56(11)) OR (NOT(load_hi) AND p26_3_reddef_58(11))) 
-& ((load_hi AND p26_3_reddef_56(10)) OR (NOT(load_hi) AND p26_3_reddef_58(10))) 
-& ((load_hi AND p26_3_reddef_56(9)) OR (NOT(load_hi) AND p26_3_reddef_58(9))) & 
-((load_hi AND p26_3_reddef_56(8)) OR (NOT(load_hi) AND p26_3_reddef_58(8))) & ((load_hi
- AND p26_3_reddef_56(7)) OR (NOT(load_hi) AND p26_3_reddef_58(7))) & ((load_hi 
-AND p26_3_reddef_56(6)) OR (NOT(load_hi) AND p26_3_reddef_58(6))) & ((load_hi AND p26_3_reddef_56(5)
-) OR (NOT(load_hi) AND p26_3_reddef_58(5))) & ((load_hi AND p26_3_reddef_56(4)) 
-OR (NOT(load_hi) AND p26_3_reddef_58(4))) & ((load_hi AND p26_3_reddef_56(3)) OR 
-(NOT(load_hi) AND p26_3_reddef_58(3))) & ((load_hi AND p26_3_reddef_56(2)) OR (
-NOT(load_hi) AND p26_3_reddef_58(2))) & ((load_hi AND p26_3_reddef_56(1)) OR (NOT(load_hi
-) AND p26_3_reddef_58(1))) & ((load_hi AND p26_3_reddef_56(0)) OR (NOT(load_hi) 
-AND p26_3_reddef_58(0)))) WHEN (NOT(in_sel(0)) AND in_sel(1) AND in_sel(2) AND (load_hi OR load_lo)) ELSE reg_idx_6;
+    reg_idx_6(0) <= GUARDED ((load_hi AND p30_2_reddef_74(0)) OR (NOT(load_hi) AND p30_2_reddef_76(0))) WHEN ((load_hi OR load_lo) AND in_sel(2) AND NOT(in_sel(0)) AND in_sel(1)) ELSE reg_idx_6(0);
   END BLOCK LABEL10;
   LABEL11 : BLOCK  ((clk = '1') AND NOT(clk'STABLE) )
   BEGIN
-    reg_idx_7 <= GUARDED (((load_hi AND p26_3_reddef_56(15)) OR (NOT(load_hi) AND p26_3_reddef_58(15))) 
-& ((load_hi AND p26_3_reddef_56(14)) OR (NOT(load_hi) AND p26_3_reddef_58(14))) 
-& ((load_hi AND p26_3_reddef_56(13)) OR (NOT(load_hi) AND p26_3_reddef_58(13))) 
-& ((load_hi AND p26_3_reddef_56(12)) OR (NOT(load_hi) AND p26_3_reddef_58(12))) 
-& ((load_hi AND p26_3_reddef_56(11)) OR (NOT(load_hi) AND p26_3_reddef_58(11))) 
-& ((load_hi AND p26_3_reddef_56(10)) OR (NOT(load_hi) AND p26_3_reddef_58(10))) 
-& ((load_hi AND p26_3_reddef_56(9)) OR (NOT(load_hi) AND p26_3_reddef_58(9))) & 
-((load_hi AND p26_3_reddef_56(8)) OR (NOT(load_hi) AND p26_3_reddef_58(8))) & ((load_hi
- AND p26_3_reddef_56(7)) OR (NOT(load_hi) AND p26_3_reddef_58(7))) & ((load_hi 
-AND p26_3_reddef_56(6)) OR (NOT(load_hi) AND p26_3_reddef_58(6))) & ((load_hi AND p26_3_reddef_56(5)
-) OR (NOT(load_hi) AND p26_3_reddef_58(5))) & ((load_hi AND p26_3_reddef_56(4)) 
-OR (NOT(load_hi) AND p26_3_reddef_58(4))) & ((load_hi AND p26_3_reddef_56(3)) OR 
-(NOT(load_hi) AND p26_3_reddef_58(3))) & ((load_hi AND p26_3_reddef_56(2)) OR (
-NOT(load_hi) AND p26_3_reddef_58(2))) & ((load_hi AND p26_3_reddef_56(1)) OR (NOT(load_hi
-) AND p26_3_reddef_58(1))) & ((load_hi AND p26_3_reddef_56(0)) OR (NOT(load_hi) 
-AND p26_3_reddef_58(0)))) WHEN (in_sel(0) AND in_sel(1) AND in_sel(2) AND (load_hi OR load_lo)) ELSE reg_idx_7;
+    reg_idx_7 <= GUARDED (((load_hi AND p30_2_reddef_74(15)) OR (NOT(load_hi) AND p30_2_reddef_76(15))) 
+& ((load_hi AND p30_2_reddef_74(14)) OR (NOT(load_hi) AND p30_2_reddef_76(14))) 
+& ((load_hi AND p30_2_reddef_74(13)) OR (NOT(load_hi) AND p30_2_reddef_76(13))) 
+& ((load_hi AND p30_2_reddef_74(12)) OR (NOT(load_hi) AND p30_2_reddef_76(12))) 
+& ((load_hi AND p30_2_reddef_74(11)) OR (NOT(load_hi) AND p30_2_reddef_76(11))) 
+& ((load_hi AND p30_2_reddef_74(10)) OR (NOT(load_hi) AND p30_2_reddef_76(10))) 
+& ((load_hi AND p30_2_reddef_74(9)) OR (NOT(load_hi) AND p30_2_reddef_76(9))) & 
+((load_hi AND p30_2_reddef_74(8)) OR (NOT(load_hi) AND p30_2_reddef_76(8))) & ((load_hi
+ AND p30_2_reddef_74(7)) OR (NOT(load_hi) AND p30_2_reddef_76(7))) & ((load_hi 
+AND p30_2_reddef_74(6)) OR (NOT(load_hi) AND p30_2_reddef_76(6))) & ((load_hi AND p30_2_reddef_74(5)
+) OR (NOT(load_hi) AND p30_2_reddef_76(5))) & ((load_hi AND p30_2_reddef_74(4)) 
+OR (NOT(load_hi) AND p30_2_reddef_76(4))) & ((load_hi AND p30_2_reddef_74(3)) OR 
+(NOT(load_hi) AND p30_2_reddef_76(3))) & ((load_hi AND p30_2_reddef_74(2)) OR (
+NOT(load_hi) AND p30_2_reddef_76(2))) & ((load_hi AND p30_2_reddef_74(1)) OR (NOT(load_hi
+) AND p30_2_reddef_76(1))) & ((load_hi AND p30_2_reddef_74(0)) OR (NOT(load_hi) 
+AND p30_2_reddef_76(0)))) WHEN ((load_hi OR load_lo) AND in_sel(2) AND in_sel(1) AND in_sel(0)) ELSE reg_idx_7;
   END BLOCK LABEL11;
-  LABEL12 : BLOCK  ((clk = '1') AND NOT(clk'STABLE) )
-  BEGIN
-    reg_idx <= GUARDED (((rtldef_16 & rtldef_16 & rtldef_16 & rtldef_16 & rtldef_16 & rtldef_16 & rtldef_16
+  p30_2_def_16 <= (in_sel = "010");
+  p30_2_reddef_74 <= (in_data(15 downto 8) & reg_idx(7 downto 0));
+  p30_2_def_10 <= (load_hi = '1');
+  p30_2_def_7 <= (in_sel = "010");
+  p30_2_reddef_76 <= (reg_idx(15 downto 8) & in_data(7 downto 0));
+  p30_2_def_1 <= (load_lo = '1');
+  reg_idx <= (((rtldef_16 & rtldef_16 & rtldef_16 & rtldef_16 & rtldef_16 & rtldef_16 & rtldef_16
  & rtldef_16 & rtldef_16 & rtldef_16 & rtldef_16 & rtldef_16 & rtldef_16 & rtldef_16
  & rtldef_16 & rtldef_16) AND reg_idx_7) OR ((rtldef_17 & rtldef_17 & rtldef_17 
 & rtldef_17 & rtldef_17 & rtldef_17 & rtldef_17 & rtldef_17 & rtldef_17 & rtldef_17
@@ -256,15 +253,6 @@ AND p26_3_reddef_58(0)))) WHEN (in_sel(0) AND in_sel(1) AND in_sel(2) AND (load_
  & rtldef_22) AND reg_idx_1) OR ((rtldef_23 & rtldef_23 & rtldef_23 & rtldef_23 
 & rtldef_23 & rtldef_23 & rtldef_23 & rtldef_23 & rtldef_23 & rtldef_23 & rtldef_23
  & rtldef_23 & rtldef_23 & rtldef_23 & rtldef_23 & rtldef_23) AND reg_idx_0));
-  END BLOCK LABEL12;
-  p26_3_def_18 <= (in_sel = "000");
-  p26_3_def_15 <= (in_sel = "011");
-  p26_3_reddef_56 <= (in_data(15 downto 8) & reg_idx(7 downto 0));
-  p26_3_def_10 <= (load_hi = '1');
-  p26_3_def_9 <= (in_sel = "000");
-  p26_3_def_6 <= (in_sel = "011");
-  p26_3_reddef_58 <= (reg_idx(15 downto 8) & in_data(7 downto 0));
-  p26_3_def_1 <= (load_lo = '1');
   rtldef_23 <= '1' WHEN (in_sel = "000") ELSE
      '0';
   rtldef_22 <= '1' WHEN (in_sel = "001") ELSE

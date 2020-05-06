@@ -21,9 +21,12 @@ architecture RTL of REGFILE is
   signal reg_idx : std_logic_vector (15 downto 0);
   
   begin
-  out0_data <= reg(to_integer(unsigned(out0_sel)));
-  out1_data <= reg(to_integer(unsigned(out1_sel)));
-  reg_idx <= reg(to_integer(unsigned (in_sel)));
+  process (reg, out0_sel, out1_sel)
+	begin
+		out0_data <= reg(to_integer(unsigned(out0_sel)));
+		out1_data <= reg(to_integer(unsigned(out1_sel)));
+		reg_idx <= reg(to_integer(unsigned (in_sel)));
+  end process;
   process (clk)
     begin
     if rising_edge (clk) then
