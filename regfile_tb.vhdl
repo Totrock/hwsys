@@ -46,6 +46,8 @@ architecture TESTBENCH of REGFILE_TB is
   --    clk <= '1';
   --    wait for period / 2;
    -- end procedure;
+   
+   
 
 begin
 
@@ -60,9 +62,20 @@ begin
   load_lo => load_lo, 
   load_hi => load_hi
   );
+  
+  
 
   -- Main process...
   process
+  
+  procedure cycle is 
+	begin 
+		clk <= '0';
+		wait for c_clk_per/2;
+		clk <= '1';
+		wait for c_clk_per/2;
+	end procedure;
+  
   begin
   --for i in 0 to 7 loop
    -- end loop
@@ -76,21 +89,59 @@ begin
     out0_sel <= "000";
     out1_sel <= "001";
     
-
-    clk <= not clk;
-    wait for c_clk_per/2;
-    clk <= not clk;
-    wait for c_clk_per/2;
+    for i in 0 to 7 loop
+		in_sel <= std_logic_vector(to_unsigned(i, 3)); 
+		--from 0000000110000000 to 1000000000000001
+		in_data <= std_logic_vector(to_unsigned(2**(8+i)+2**(7-i), 16)); 
+		load_lo <= '1';
+		load_hi <= '0';    
+		cycle;
+		load_lo <= '0';
+		load_hi <= '1';
+		cycle;
     
+    end loop;
+
     load_lo <= '0';
-    load_hi <= '1';
-    clk <= not clk;
-    wait for c_clk_per/2;
-    clk <= not clk;
-    wait for c_clk_per/2;
+	load_hi <= '0';
     
-    assert out0_data = "0000000000000000"  report "genatzt!";
+    for i in 0 to 7 loop
+		out0_sel <= std_logic_vector(to_unsigned(i,3)); 
+		wait for c_clk_per/2;
+		--report("round " & integer'image(i) & 
+		--" expected: " & integer'image(2**(8+i)+2**(7-i)) & 
+		--" out0_data: " & integer'image(to_integer(unsigned (out0_data))));
+        assert out0_data = std_logic_vector(to_unsigned(2**(8+i) + 2**(7-i),16)) report "out0_data wrong!";
+    end loop;
 
+    in_data <= "0000000010101010";
+    in_sel <= "000"; 
+	load_lo <= '1';
+	load_hi <= '0'; 
+    out0_sel <= "000"; 
+    cycle;
+    --report(" out0_data: " & integer'image(to_integer(unsigned (out0_data))));
+    assert out0_data = "0000000110101010" report "lo1hi0 fail!";
+	for i in 1 to 7 loop
+		out0_sel <= std_logic_vector(to_unsigned(i,3)); 
+		wait for c_clk_per/2;
+        assert out0_data = std_logic_vector(to_unsigned(2**(8+i) + 2**(7-i),16)) report "out0_data wrong!";
+    end loop;
+
+
+	in_data <= "1111000000000000";
+    in_sel <= "000"; 
+	load_lo <= '0';
+	load_hi <= '1'; 
+    out1_sel <= "000"; 
+    cycle;
+    --report(" out0_data: " & integer'image(to_integer(unsigned (out0_data))));
+    assert out1_data = "1111000010101010" report "lo0hi1 fail!";
+    for i in 1 to 7 loop
+		out1_sel <= std_logic_vector(to_unsigned(i,3)); 
+		wait for c_clk_per/2;
+        assert out1_data = std_logic_vector(to_unsigned(2**(8+i) + 2**(7-i),16)) report "out0_data wrong!";
+    end loop;
 
 
     -- Print a note & finish simulation now
