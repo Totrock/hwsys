@@ -28,14 +28,16 @@ architecture RTL of REGFILE is
 		reg_idx <= reg(to_integer(unsigned (in_sel)));
   end process;
   process (clk)
+  variable load_hilo: std_logic_vector (1 downto 0);
     begin
     if rising_edge (clk) then
-      if (load_lo = '1') then
-        reg(to_integer(unsigned (in_sel))) <= reg_idx(15 downto 8) & in_data(7 downto 0);
-      end if;
-      if (load_hi = '1') then
-        reg(to_integer(unsigned (in_sel))) <= in_data(15 downto 8) & reg_idx(7 downto 0);
-      end if;
+	  load_hilo := load_hi & load_lo;
+	  case load_hilo is
+		 when "10" => reg(to_integer(unsigned (in_sel))) <= in_data(15 downto 8) & reg_idx(7 downto 0);
+		 when "01" => reg(to_integer(unsigned (in_sel))) <= reg_idx(15 downto 8) & in_data(7 downto 0);
+		 when "11" => reg(to_integer(unsigned (in_sel))) <= in_data(15 downto 0);
+		 when others => null;
+	  end case;
     end if;
   end process;
 end RTL;
