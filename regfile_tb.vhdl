@@ -142,6 +142,35 @@ begin
 		wait for c_clk_per/2;
         assert out1_data = std_logic_vector(to_unsigned(2**(8+i) + 2**(7-i),16)) report "out0_data wrong!";
     end loop;
+    
+    
+    
+    load_lo <= '0';
+	load_hi <= '0'; 
+	out1_sel <= "000";
+	cycle;
+    assert out1_data = "1111000010101010" report "lo0hi0 fail!";
+    for i in 1 to 7 loop
+		out1_sel <= std_logic_vector(to_unsigned(i,3)); 
+		wait for c_clk_per/2;
+        assert out1_data = std_logic_vector(to_unsigned(2**(8+i) + 2**(7-i),16)) report "out0_data wrong!";
+    end loop;
+    
+    
+    
+    in_data <= "1100110011001100";
+    in_sel <= "111"; 
+	load_lo <= '1';
+	load_hi <= '1'; 
+    out1_sel <= "111"; 
+    cycle;
+    assert out1_data = "1100110011001100" report "lo1hi1 fail!";
+    for i in 1 to 6 loop
+		out1_sel <= std_logic_vector(to_unsigned(i,3)); 
+		wait for c_clk_per/2;
+        assert out1_data = std_logic_vector(to_unsigned(2**(8+i) + 2**(7-i),16)) report "out0_data wrong!";
+    end loop;
+    
 
 
     -- Print a note & finish simulation now
