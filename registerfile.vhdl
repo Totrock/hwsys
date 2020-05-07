@@ -25,6 +25,9 @@ architecture RTL of REGFILE is
 	begin
 		out0_data <= reg(to_integer(unsigned(out0_sel)));
 		out1_data <= reg(to_integer(unsigned(out1_sel)));
+  end process;
+  process (reg, in_sel)
+	begin
 		reg_idx <= reg(to_integer(unsigned (in_sel)));
   end process;
   process (clk)
